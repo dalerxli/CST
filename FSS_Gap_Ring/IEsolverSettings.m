@@ -1,0 +1,32 @@
+function []=IEsolverSettings(MWS)
+IESOLVER = invoke(MWS, 'IESolver');
+invoke(IESOLVER, 'Reset');
+invoke(IESOLVER, 'UseFastFrequencySweep', 'True');
+invoke(IESOLVER, 'UseIEGroundPlane', 'False');
+% invoke(IESOLVER, 'SetRealGroundMaterialName', '');
+invoke(IESOLVER, 'CalcFarFieldInRealGround', 'False');
+invoke(IESOLVER, 'RealGroundModelType', 'Auto');
+invoke(IESOLVER, 'PreconditionerType', 'Auto');
+invoke(IESOLVER, 'ExtendThinWireModelByWireNubs', 'False');
+invoke(IESOLVER, 'SetFMMFFCalcStopLevel', '0');
+invoke(IESOLVER, 'SetFMMFFCalcNumInterpPoints', '6');
+invoke(IESOLVER, 'UseFMMFarfieldCalc', 'True');
+invoke(IESOLVER, 'SetCFIEAlpha', '0.500000');
+invoke(IESOLVER, 'LowFrequencyStabilization', 'False');
+invoke(IESOLVER, 'LowFrequencyStabilizationML', 'True');
+invoke(IESOLVER, 'Multilayer', 'False');
+invoke(IESOLVER, 'SetiMoMACC_I', '0.0001');
+invoke(IESOLVER, 'SetiMoMACC_M', '0.0001');
+invoke(IESOLVER, 'DeembedExternalPorts', 'True');
+invoke(IESOLVER, 'SetOpenBC_XY', 'True');
+invoke(IESOLVER, 'OldRCSSweepDefintion', 'False');
+invoke(IESOLVER, 'SetAccuracySetting', 'Custom');
+invoke(IESOLVER, 'CalculateSParaforFieldsources', 'True');
+invoke(IESOLVER, 'ModeTrackingCMA', 'True');
+invoke(IESOLVER, 'NumberOfModesCMA', '3');
+invoke(IESOLVER, 'StartFrequencyCMA', '-1.0');
+invoke(IESOLVER, 'SetAccuracySettingCMA', 'Default');
+invoke(IESOLVER, 'FrequencySamplesCMA', '0');
+invoke(IESOLVER, 'SetMemSettingCMA', 'Auto');
+release(IESOLVER);
+end
