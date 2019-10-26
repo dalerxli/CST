@@ -1,4 +1,4 @@
-function [aaa, bbb] = main(Para, Freq)
+function [] = main(Para, Freq)
 % Para shape(1, 6): [SubThickness, SubWidth, RingRadius_Outer,
 %                    RingRadius_Inner, GapLength, RingHeight]
 % Freq shape(1, 2): [Freq_min, Freq_max]
@@ -237,5 +237,12 @@ FDSOLVER = invoke(MWS, 'fdsolver');
 invoke(FDSOLVER, 'Start');
 release(FDSOLVER);
 % '----------------------------------------------------------------------------
-[aaa, bbb] = SaveResults(MWS);
+[Freq_, s11_re, s11_im, s21_re, s21_im] = SaveResults(MWS);
+Results = [Freq_.', s11_re.', s11_im.', s21_re.', s21_im.'];
+path = pwd;
+FileName_tmp = ['\', num2str(SubThickness), '-', num2str(SubWidth), '-', num2str(RingRadius_Outer), '-', num2str(RingRadius_Inner), '-', num2str(GapLength), '-', num2str(RingHeight), '.txt'];
+PathName_tmp = [path, '\DataSets', FileName_tmp];
+save(PathName_tmp, 'Results', '-ascii');
+invoke(MWS, 'Quit');
+pause(5);
 end
