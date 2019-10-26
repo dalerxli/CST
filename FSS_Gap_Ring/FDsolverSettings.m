@@ -61,7 +61,7 @@ invoke(FDSOLVER, 'AddStopCriterion', 'All S-Parameters', '0.01', '2', 'Srf', 'Tr
 invoke(FDSOLVER, 'AddStopCriterion', 'Reflection S-Parameters', '0.01', '2', 'Srf', 'False');
 invoke(FDSOLVER, 'AddStopCriterion', 'Transmission S-Parameters', '0.01', '2', 'Srf', 'False');
 invoke(FDSOLVER, 'SweepMinimumSamples', '3');
-invoke(FDSOLVER, 'SetNumberOfResultDataSamples', '1001');
+invoke(FDSOLVER, 'SetNumberOfResultDataSamples', '49');
 invoke(FDSOLVER, 'SetResultDataSamplingMode', 'Automatic');
 invoke(FDSOLVER, 'SweepWeightEvanescent', '1.0');
 invoke(FDSOLVER, 'AccuracyROM', '1e-4');

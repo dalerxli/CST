@@ -1,16 +1,14 @@
-clear
-clc
-% '----------------------------------------------------------------------------
-ParaList = load('ParaList.txt');
-% '----------------------------------------------------------------------------
-SubWidth = 7;
-SubThickness = 0.1;
-RingRadius_Outer = 1.4;
-RingRadius_Inner = 1.0;
-RingHeight = 0.05;
-GapLength = 0.5;
+function [aaa, bbb] = main(Para, Freq)
+% Para shape(1, 6): [SubThickness, SubWidth, RingRadius_Outer,
+%                    RingRadius_Inner, GapLength, RingHeight]
+% Freq shape(1, 2): [Freq_min, Freq_max]
+SubThickness = Para(1);
+SubWidth = Para(2);
+RingRadius_Outer = Para(3);
+RingRadius_Inner = Para(4);
+GapLength = Para(5);
+RingHeight = Para(6);
 Auxiliary = RingRadius_Outer;
-Freq = [8, 22];
 % '----------------------------------------------------------------------------
 CST = actxserver('CSTStudio.application');
 MWS = invoke(CST, 'NewMWS');
@@ -238,3 +236,6 @@ release(SOLID);
 FDSOLVER = invoke(MWS, 'fdsolver');
 invoke(FDSOLVER, 'Start');
 release(FDSOLVER);
+% '----------------------------------------------------------------------------
+[aaa, bbb] = SaveResults(MWS);
+end
